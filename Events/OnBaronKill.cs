@@ -31,8 +31,8 @@ namespace MacroLeague.Events
                         Register?.Invoke(this, new OnBaronKillArgs {Allgamedata = Program.Allgamedata});
                     }
                 }
+                Thread.Sleep(100);
             }
-        
         }
     }
 

@@ -29,8 +29,6 @@ namespace MacroLeague.Events
                 {
                     Thread.Sleep(100);
                     var uri = "https://127.0.0.1:2999/liveclientdata/allgamedata";
-                    ServicePointManager.ServerCertificateValidationCallback =
-                        (sender, certificate, chain, sslPolicyErrors) => true;
 
                     var web = new WebClient();
                     var responseString = web.DownloadString(uri);
@@ -44,18 +42,8 @@ namespace MacroLeague.Events
                 }
                 catch (WebException)
                 {
-                    cleanup();
                 }
             }
-        }
-
-        private static void cleanup()
-        {
-            Program.Allgamedata = null;
-            Program.nextDragonKillTimer = 10000000000d;
-            Program.nextHeraldKillTimer = 10000000000d;
-            Program.nextBaronKillTimer = 10000000000d;
-            Program.nextSeigeSpawnTimer = 10000000000d;
         }
     }
 

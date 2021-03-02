@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Speech.Synthesis;
 using System.Threading.Tasks;
 using MacroLeague.Events;
@@ -16,11 +17,14 @@ namespace MacroLeague
         public static double nextBaronKillTimer = 100000000000;
         public static double nextSeigeSpawnTimer = 100000000000;
         
-        public static allgamedata Allgamedata = null;
+        public static allgamedata Allgamedata;
 
         public static void Main(string[] args) => new Program().Start().GetAwaiter().GetResult();
         private async Task Start()
         {
+            ServicePointManager.ServerCertificateValidationCallback =
+                (sender, certificate, chain, sslPolicyErrors) => true;
+            
             // Select a voice from the SpeechSynthesizer#GetInstalledVoices list
             _speechSynthesizer.SelectVoice("Microsoft Zira Desktop");
             
@@ -59,6 +63,7 @@ namespace MacroLeague
         private void gameStart(object sender, OnGameStartArgs response)
         {
             Console.WriteLine("New game started.");
+            cleanup();
         }
         
         /// <summary>
@@ -182,6 +187,15 @@ namespace MacroLeague
         {
             Console.WriteLine("Siege 15");
             _speechSynthesizer.SpeakAsync("Siege 15");
+        }
+        
+        private static void cleanup()
+        {
+            Program.Allgamedata = null;
+            Program.nextDragonKillTimer = 10000000000d;
+            Program.nextHeraldKillTimer = 10000000000d;
+            Program.nextBaronKillTimer = 10000000000d;
+            Program.nextSeigeSpawnTimer = 10000000000d;
         }
     }
 } 

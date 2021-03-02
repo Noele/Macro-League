@@ -40,6 +40,7 @@ namespace MacroLeague.Events
                         }
                     }
                 }
+                Thread.Sleep(100);
             }
         }
     }

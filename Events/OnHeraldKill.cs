@@ -30,6 +30,7 @@ namespace MacroLeague.Events
                         Register?.Invoke(this, new OnHeraldKillArgs {Allgamedata = Program.Allgamedata});
                     }
                 }
+                Thread.Sleep(100);
             }
         }
     }

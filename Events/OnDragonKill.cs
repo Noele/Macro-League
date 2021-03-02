@@ -31,6 +31,7 @@ namespace MacroLeague.Events
                         Register?.Invoke(this, new OnDragonKillArgs {Allgamedata = Program.Allgamedata});
                     }
                 }
+                Thread.Sleep(100);
             }
         }
     }
