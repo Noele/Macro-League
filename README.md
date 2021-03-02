@@ -13,8 +13,8 @@ The issue with the video version is that its limited to only being able to be ar
 
 ## TO:DO
 <ol>
-  <li>inhibitor respawn timers</li>
-  <li>enemy respawn announcments</li>
+  <li>Inhibitor respawn timers</li>
+  <li>Enemy respawn announcments</li>
   <li>Siege Minion announcments</li>
   <li>Better Voice</li>
 </ol>
