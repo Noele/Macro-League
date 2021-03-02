@@ -14,6 +14,8 @@ namespace MacroLeague
         public static double nextDragonKillTimer = 100000000000;
         public static double nextHeraldKillTimer = 100000000000;
         public static double nextBaronKillTimer = 100000000000;
+        public static double nextSeigeSpawnTimer = 100000000000;
+        
         public static allgamedata Allgamedata = null;
 
         public static void Main(string[] args) => new Program().Start().GetAwaiter().GetResult();
@@ -23,6 +25,7 @@ namespace MacroLeague
             _speechSynthesizer.SelectVoice("Microsoft Zira Desktop");
             
             // Instantiate events 
+            var onSiegeMinionSpawn = new OnSiegeMinionSpawn();
             var onGameStart = new OnGameStart();
             var onHeartbeat = new OnHeartbeat();
             var onDragonKill = new OnDragonKill();
@@ -33,6 +36,7 @@ namespace MacroLeague
             var nstb = new NSTB();
             
             // Register Events
+            onSiegeMinionSpawn.Register += siegeMinionSpawn;
             onGameStart.Register += gameStart;
             onHeartbeat.Register += heartbeat;
             onBaronKill.Register += baronKill;
@@ -172,6 +176,12 @@ namespace MacroLeague
         {
             Console.WriteLine("90s till baron spawns.");
             _speechSynthesizer.SpeakAsync("Baron 90");
+        }
+        
+        private void siegeMinionSpawn(object sender, OnSiegeMinionSpawnArgs response)
+        {
+            Console.WriteLine("Siege 15");
+            _speechSynthesizer.SpeakAsync("Siege 15");
         }
     }
 } 

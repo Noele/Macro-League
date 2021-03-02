@@ -55,6 +55,7 @@ namespace MacroLeague.Events
             Program.nextDragonKillTimer = 10000000000d;
             Program.nextHeraldKillTimer = 10000000000d;
             Program.nextBaronKillTimer = 10000000000d;
+            Program.nextSeigeSpawnTimer = 10000000000d;
         }
     }
 
